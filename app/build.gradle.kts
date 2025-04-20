@@ -3,11 +3,17 @@ plugins {
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.devtools.ksp")
     id("dagger.hilt.android.plugin")
+ id ("kotlin-kapt")
+    id("com.android.application")
+    id("com.google.gms.google-services")
 }
-
+val localProperties = File(rootProject.rootDir, "local.properties").reader().use {
+    Properties().apply { load(it) }
+}
+val apiKey = localProperties.getProperty("NEWS_API_KEY", "")
 android {
     namespace = "com.example.myapplication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.myapplication"
@@ -62,7 +68,10 @@ dependencies {
     implementation(libs .androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(project(":utilities"))
-
+    implementation("com.google.firebase:firebase-auth:23.2.0")
+    implementation("androidx.credentials:credentials:1.5.0")
+    implementation("androidx.credentials:credentials-play-services-auth:1.5.0")
+    implementation("com.google.android.libraries.identity.googleid:googleid:1.1.1")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
