@@ -1,6 +1,4 @@
 package com.example.newsnow.ui.Screens
-
-
 import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Arrangement
@@ -68,7 +66,6 @@ fun HomeScreen(
         }
     }
 }
-
 @Composable
 fun ErrorComponent(message: String) {
     Column(
@@ -85,14 +82,6 @@ fun ErrorComponent(message: String) {
         )
     }
 }
-
-
-
-
-
-
-
-
 @Preview
 @Composable
 fun HomeScreenPreview() {
